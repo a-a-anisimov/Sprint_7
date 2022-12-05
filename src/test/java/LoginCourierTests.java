@@ -8,7 +8,8 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class LoginCourierTest {
+public class LoginCourierTests {
+
     @BeforeClass
     public static void log() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
@@ -46,6 +47,7 @@ public class LoginCourierTest {
                 .and()
                 .assertThat().body("message", equalTo("Учетная запись не найдена")); // запрос возвращает ошибку
     }
+
     @Test //попытка авторизоваться c неверным пароллем пользователя - запрос возвращает код 404 и сообщение с ошибкой
     public void LoginCourierWithWrongPassword() {
         String json = "{\"login\": \"Andrey0\", \"password\": \"WrongPassw0rd\", \"firstName\": \"Sparrow000\"}";
