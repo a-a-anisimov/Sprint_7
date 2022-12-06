@@ -1,7 +1,11 @@
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.response.Response;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,92 +19,80 @@ public class CreateNewCourierTests {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
-    //для проверки создания нового курьера необходимо создавать каждый раз новое оригинальное имя!!!
+    @Before
+    public void setUp() {
+        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+        RestAssured.basePath = "/api/v1/courier";
+    }
 
-    @Test //проверка возмжности создания нового курьера, статус кода и содержания тела ответа
-    @Description("Always create original login")
-    public void CreateNewCourier() {
-        String json = "{\"login\": \"Andrey21\", \"password\": \"P@ssw0rd123\", \"firstName\": \"Sparrow000\"}";
-        given()
-                .header("Content-Type", "application/json")
-                .baseUri("https://qa-scooter.praktikum-services.ru")
+    @Step("Create new courier (Send POST request)")
+    public Response sendPostRequestCreateNewCourier(String json){
+        Response response =given()
+                .header("Content-type", "application/json")
+                .and()
                 .body(json)
                 .when()
-                .post("/api/v1/courier")
-                .then()
-                .statusCode(201) //провекра кода ответа
-                .and()
-                .assertThat().body("ok", equalTo(true)); // успешный запрос возвращает ok: true
+                .post();
+        return response;
+    }
+
+    @Step("Check status code and body")
+    public void checkStatusCode201(Response response){
+        response.then().assertThat().statusCode(201).and().assertThat().body("ok", equalTo(true));
+    }
+
+    @Step("Check status code and body")
+    public void checkStatusCode409(Response response){
+        response.then().assertThat().statusCode(409).and().assertThat().body("message", equalTo("Этот логин уже используется. Попробуйте другой."));
+    }
+
+    @Step("Check status code and body")
+    public void checkStatusCode400(Response response){
+        response.then().assertThat().statusCode(400).and().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
     @Test
-    //для проверки невозможности создания двух курьеров с одинаковыми именами необходимо поменять название на то, которое указано в Тесте выше или было создано ранее
-    public void CreateNewCourierWithTheSameName() {
+    @Description("Always create original login for new courier. Check response status code and availability body \"ok: true\"")
+    @DisplayName("Create new courier")
+    public void createNewCourier() {
+        String json = "{\"login\": \"Andrey55\", \"password\": \"P@ssw0rd123\", \"firstName\": \"Sparrow000\"}";
+        Response response = sendPostRequestCreateNewCourier(json);
+        checkStatusCode201(response);
+    }
+
+    @Test
+    @Description("Use existing login (status code should be 409 and message \"Этот логин уже используется. Попробуйте другой.\")")
+    @DisplayName("Create new courier with exiting login")
+    public void createNewCourierWithTheSameName() {
         String json = "{\"login\": \"Andrey1\", \"password\": \"P@ssw0rd123\", \"firstName\": \"Sparrow000\"}";
-        given()
-                .header("Content-Type", "application/json")
-                .baseUri("https://qa-scooter.praktikum-services.ru")
-                .body(json)
-                .when()
-                .post("/api/v1/courier")
-                .then()
-                .assertThat()
-                .statusCode(409) //ошибки не будет, т.к. сразу закладываем ожидаемый код 409, а не 201
-                .and()
-                .assertThat().body("message", equalTo("Этот логин уже используется. Попробуйте другой.")); // запрос возвращает ошибку
-        ;
+        Response response = sendPostRequestCreateNewCourier(json);
+        checkStatusCode409(response);
     }
 
-    @Test //для проверки возможности создания нового курьера без обязательного поля "login"
-    public void CreateNewCourierWithoutLogin() {
-        String json = "{\"login\": \"\", \"password\": \"P@ssw0rd123\", \"firstName\": \"Sparrow000\"}";
-        given()
-                .header("Content-Type", "application/json")
-                .baseUri("https://qa-scooter.praktikum-services.ru")
-                .body(json)
-                .when()
-                .post("/api/v1/courier")
-                .then()
-                .assertThat()
-                .statusCode(400) //ошибки не будет, т.к. сразу закладываем ожидаемый код 400, а не 201
-                .and()
-                .assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи")); // запрос возвращает ошибку
-        ;
+    @Test
+    @Description("Without login (status code should be 400 and message \"Недостаточно данных для создания учетной записи\")")
+    @DisplayName("Create new courier without field login")
+    public void createNewCourierWithoutLogin() {
+        String json = "{\"login\": \"Andrey56\", \"password\": \"\", \"firstName\": \"Sparrow000\"}";
+        Response response = sendPostRequestCreateNewCourier(json);
+        checkStatusCode400(response);
     }
 
-    @Test //для проверки возможности создания нового курьера без обязательного поля "password"
-    @Description("Always create original login")
-    public void CreateNewCourierWithoutPassword() {
-        String json = "{\"login\": \"Andrey22\", \"password\": \"\", \"firstName\": \"Sparrow000\"}";
-        given()
-                .header("Content-Type", "application/json")
-                .baseUri("https://qa-scooter.praktikum-services.ru")
-                .body(json)
-                .when()
-                .post("/api/v1/courier")
-                .then()
-                .assertThat()
-                .statusCode(400) //ошибки не будет, т.к. сразу закладываем ожидаемый код 400, а не 201
-                .and()
-                .assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи")); // запрос возвращает ошибку
-        ;
+    @Test
+    @Description("Always create original login for new courier (status code should be 400 and message \"Недостаточно данных для создания учетной записи\")")
+    @DisplayName("Create new courier without field password")
+    public void createNewCourierWithoutPassword() {
+        String json = "{\"login\": \"Andrey57\", \"password\": \"\", \"firstName\": \"Sparrow000\"}";
+        Response response = sendPostRequestCreateNewCourier(json);
+        checkStatusCode400(response);
     }
 
-    @Test //для проверки возможности создания нового курьера без поля "firstName"
-    @Description("Always create original login")
-    public void CreateNewCourierWithoutFirstName() {
-        String json = "{\"login\": \"Andrey23\", \"password\": \"P@ssw0rd123\", \"firstName\": \"\"}";
-        given()
-                .header("Content-Type", "application/json")
-                .baseUri("https://qa-scooter.praktikum-services.ru")
-                .body(json)
-                .when()
-                .post("/api/v1/courier")
-                .then()
-                .assertThat()
-                .statusCode(201) //ошибки не будет, т.к. поле не является обязательным
-                .and()
-                .assertThat().body("ok", equalTo(true)); // запрос возвращает ok: true
-        ;
+    @Test
+    @Description("Always create original login (status code should be 201)")
+    @DisplayName("Create new courier without field firstName")
+    public void createNewCourierWithoutFirstName() {
+        String json = "{\"login\": \"Andrey58\", \"password\": \"P@ssw0rd123\", \"firstName\": \"\"}";
+        Response response = sendPostRequestCreateNewCourier(json);
+        checkStatusCode201(response);
     }
 }

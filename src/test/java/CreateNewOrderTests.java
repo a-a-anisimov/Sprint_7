@@ -1,6 +1,10 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,9 +18,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(Parameterized.class)
-
 public class CreateNewOrderTests<firstName, lastName, address, metroStation, phone, color, comment, deliveryDate, rentTime> {
-
     private String firstName;
     private String lastName;
     private String address;
@@ -39,7 +41,6 @@ public class CreateNewOrderTests<firstName, lastName, address, metroStation, pho
         this.color = color;
     }
 
-
     @Parameterized.Parameters(name = "firstName = {0}, lastName = {1}, address = {2}, metroStation = {3}, phone = {4}, rentTime = {5}, " +
             "deliveryDate = {6}, comment = {7}, color = {8}")
 
@@ -59,19 +60,37 @@ public class CreateNewOrderTests<firstName, lastName, address, metroStation, pho
     @Before
     public void setUp() {
         RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+        RestAssured.basePath = "/api/v1/orders";
+    }
+
+    @Step("Create new order (Send POST request)")
+    public Response sendPostRequestCreateNewOrder(Object order){
+        Response response =given()
+                .header("Content-type", "application/json")
+                .body(order)
+                .and()
+                .when()
+                .post();
+        return response;
+    }
+
+    @Step("Check status code")
+    public void checkStatusCode(Response response){
+        response.then().assertThat().statusCode(201);
+    }
+
+    @Step("Check body contains track")
+    public void checkBodyContainsTrack(Response response){
+        response.then().assertThat().body("track",notNullValue());
     }
 
     @Test
-    public void CreateNewCourierStatusCode() {
+    @Description("Check response status code and availability track")
+    @DisplayName("Create new orders")
+    public void createNewOrders() {
         Order order = new Order(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, color);
-        given()
-                .header("Content-type", "application/json")
-                .and()
-                .body(order)
-                .when()
-                .post("/api/v1/orders")
-                .then().statusCode(201) //успешное создание заказа с разным набором данных
-                .and()
-                .assertThat().body("track", notNullValue()); //тело ответа содержит track
+        Response response = sendPostRequestCreateNewOrder(order);
+        checkStatusCode(response);
+        checkBodyContainsTrack(response);
     }
 }

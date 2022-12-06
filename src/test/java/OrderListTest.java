@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -9,7 +11,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderListTest {
-
     @BeforeClass
     public static void log() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
@@ -18,19 +19,22 @@ public class OrderListTest {
     @Before
     public void setUp() {
         RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru";
+        RestAssured.basePath = "/api/v1/orders";
     }
 
-    @Test // получение общего списка заказов без заполнения полей, т.к. ни одно из них не является обязательным
-    public void GetOrderList() {
+    @Test
+    @Description("Check response status code and availability orders list")
+    @DisplayName("Get all orders list without all fields")
+    public void getOrderList() {
         String json = "{\"courierId\": \"\", \"nearestStation\": \"\", \"limit\": \"\", \"page\": \"\"}";
         given()
                 .header("Content-type", "application/json")
                 .and()
                 .body(json)
                 .when()
-                .get("/api/v1/orders")
-                .then().statusCode(200) //провекра кода ответа
+                .get()
+                .then().statusCode(200)
                 .and()
-                .assertThat().body("orders", notNullValue()); //успешный запрос возвращает все orders
+                .assertThat().body("orders", notNullValue());
     }
 }
