@@ -73,7 +73,7 @@ public class CreateNewCourierTests {
     @Description("Without login (status code should be 400 and message \"Недостаточно данных для создания учетной записи\")")
     @DisplayName("Create new courier without field login")
     public void createNewCourierWithoutLogin() {
-        String json = "{\"login\": \"Andrey56\", \"password\": \"\", \"firstName\": \"Sparrow000\"}";
+        String json = "{\"login\": \"\", \"password\": \"P@ssw0rd123\", \"firstName\": \"Sparrow000\"}";
         Response response = sendPostRequestCreateNewCourier(json);
         checkStatusCode400(response);
     }

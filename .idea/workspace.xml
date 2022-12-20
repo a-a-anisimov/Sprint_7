@@ -4,27 +4,144 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26c11832-344b-48ba-81e1-d82ee03bb4ce" name="Changes" comment="" />
+    <list default="true" id="26c11832-344b-48ba-81e1-d82ee03bb4ce" name="Changes" comment="add modified finish project">
+      <change afterPath="$PROJECT_DIR$/src/test/java/Mesto1Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OrdersClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrdersClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CreateNewCourierTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateNewCourierTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CreateNewOrderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CreateNewOrderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/02c3415f-6a87-495e-b2f3-f78cd0e5d1de-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/35de29f0-a721-42a4-beed-4bf0801cd743-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/41c3625e-f88f-4d82-9ebf-89e6c1a3db92-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/44de0354-5fc6-4a56-8a29-71fe431a8a7c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/5c1f5104-b0f4-4130-aa0d-ad682736d507-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/5ca75307-e01f-45c7-9c81-3859f18f6974-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/70fccacd-41c5-43c3-9b5e-53a7684d1f4a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/81ca7c75-709d-49bb-a00b-1e5fba33c12f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/99cf9c55-9b1a-480c-bb0e-a7890181f217-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/allure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/allure-results/allure.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/c4017b90-3277-4794-b837-723d97ad26b1-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/cdb6bbcb-ca58-40f2-8008-f4b137223cf3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/d6e760b9-4628-4a68-ade6-b658fb2d69f5-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/d72ec149-2a56-4ced-94fb-68bac87a6059-result.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2IJcjORI4OyAFyRntkf2I8VUKuy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn clean test" />
+      <command value="mvn allure:serve" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.Mesto1Test">
+    <configuration name="CreateNewCourierTests.createNewCourierWithoutLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateNewCourierTests" />
+      <option name="METHOD_NAME" value="createNewCourierWithoutLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateNewCourierTestssssss" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateNewCourierTestssssss" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateNewCourierTestssssss.createNewCourier" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateNewCourierTestssssss" />
+      <option name="METHOD_NAME" value="createNewCourier" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateNewOrderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateNewOrderTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Mesto1Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sprint_7" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Mesto1Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Mesto1Test" />
+        <item itemvalue="JUnit.CreateNewOrderTests" />
+        <item itemvalue="JUnit.CreateNewCourierTests.createNewCourierWithoutLogin" />
+        <item itemvalue="JUnit.CreateNewCourierTestssssss" />
+        <item itemvalue="JUnit.CreateNewCourierTestssssss.createNewCourier" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,6 +151,21 @@
       <option name="presentableId" value="Default" />
       <updated>1669903265041</updated>
     </task>
+    <task id="LOCAL-00001" summary="add finish project">
+      <created>1670244959704</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670244959704</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add modified finish project">
+      <created>1670339238051</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670339238051</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -46,5 +178,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add finish project" />
+    <MESSAGE value="add modified finish project" />
+    <option name="LAST_COMMIT_MESSAGE" value="add modified finish project" />
   </component>
 </project>

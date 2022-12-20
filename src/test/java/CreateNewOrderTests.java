@@ -46,7 +46,7 @@ public class CreateNewOrderTests<firstName, lastName, address, metroStation, pho
 
     public static Object[][] getData() {
         return new Object[][]{
-                {"Андрей", "Анисимов", "Дунайский, 5, 45", "1", "+7 921 777 77 77", 1, "2022-12-12", "Comment1", Arrays.asList("BLACK", "GREY")},
+                {"Андрей", "Анисимов", "Дунайский, 5, 45", "1", "+7 921 777 77 77", 1, "2022-12-12", "Comment1", List.of("BLACK", "GREY")},
                 {"Семён", "Семёнов", "Среднерогатская, 20, 450", "14", "+7 911 111 11 11", 3, "2022-12-17", "Comment2", Arrays.asList("BLACK")},
                 {"Иван", "Иванов", "Петрововка, 38, 13", "101", "+7 901 999 99 99", 7, "2022-12-25", "Comment3", null},
         };
